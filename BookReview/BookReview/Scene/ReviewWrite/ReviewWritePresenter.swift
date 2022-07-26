@@ -12,6 +12,7 @@ protocol ReviewWriteProtocol {
     func showCloseAlertController()
     func close()
     func setupViews()
+    func presentToSearchBookViewController()
 }
 
 final class ReviewWritePresenter {
@@ -32,5 +33,9 @@ final class ReviewWritePresenter {
 
     func didTapRightBarButton() {
         viewController.close()
+    }
+
+    func didTapBookTitleButton() {
+        viewController.presentToSearchBookViewController()
     }
 }
