@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		654DC0D5288EC2AB00155D35 /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654DC0D4288EC2AB00155D35 /* ReviewWriteViewController.swift */; };
+		654DC0D7288EC2B900155D35 /* ReviewWritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654DC0D6288EC2B900155D35 /* ReviewWritePresenter.swift */; };
 		659C372728882D1100D6CD8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C372628882D1100D6CD8E /* AppDelegate.swift */; };
 		659C372928882D1100D6CD8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C372828882D1100D6CD8E /* SceneDelegate.swift */; };
 		659C372B28882D1100D6CD8E /* ReviewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C372A28882D1100D6CD8E /* ReviewListViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		654DC0D4288EC2AB00155D35 /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
+		654DC0D6288EC2B900155D35 /* ReviewWritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritePresenter.swift; sourceTree = "<group>"; };
 		659C372328882D1100D6CD8E /* BookReview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookReview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		659C372628882D1100D6CD8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		659C372828882D1100D6CD8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		654DC0D8288EC2BE00155D35 /* ReviewWrite */ = {
+			isa = PBXGroup;
+			children = (
+				654DC0D4288EC2AB00155D35 /* ReviewWriteViewController.swift */,
+				654DC0D6288EC2B900155D35 /* ReviewWritePresenter.swift */,
+			);
+			path = ReviewWrite;
+			sourceTree = "<group>";
+		};
 		659C371A28882D1100D6CD8E = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				659C3761288831AA00D6CD8E /* ReviewList */,
+				654DC0D8288EC2BE00155D35 /* ReviewWrite */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -289,8 +303,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				654DC0D7288EC2B900155D35 /* ReviewWritePresenter.swift in Sources */,
 				659C372B28882D1100D6CD8E /* ReviewListViewController.swift in Sources */,
 				659C372728882D1100D6CD8E /* AppDelegate.swift in Sources */,
+				654DC0D5288EC2AB00155D35 /* ReviewWriteViewController.swift in Sources */,
 				659C3760288831A700D6CD8E /* ReviewListPresenter.swift in Sources */,
 				659C372928882D1100D6CD8E /* SceneDelegate.swift in Sources */,
 			);
