@@ -17,7 +17,6 @@ final class ReviewListViewController: UIViewController {
 
         return tableView
     }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +25,6 @@ final class ReviewListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         presenter.viewWillAppear()
     }
 }
@@ -51,7 +49,7 @@ extension ReviewListViewController: ReviewListProtocol {
     }
 
     func presentToReviewWriteViewController() {
-        let vc = UINavigationController(rootViewController: ReviewWriteViewController())
+        let vc = UINavigationController(rootViewController: ReviewWriteViewController(writeReviewDelegate: presenter))
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

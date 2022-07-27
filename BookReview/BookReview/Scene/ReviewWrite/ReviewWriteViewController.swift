@@ -13,6 +13,18 @@ import Kingfisher
 final class ReviewWriteViewController: UIViewController {
     private lazy var presenter = ReviewWritePresenter(viewController: self)
 
+    private let writeReviewDelegate: WriteReviewDelegate
+
+    init(writeReviewDelegate: WriteReviewDelegate) {
+        self.writeReviewDelegate = writeReviewDelegate
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private lazy var bookTitleButton: UIButton = {
         let button = UIButton()
         button.setTitle("책 제목", for: .normal)
@@ -27,7 +39,7 @@ final class ReviewWriteViewController: UIViewController {
     private lazy var contentsTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = .tertiaryLabel
-        textView.text = "내용을 입력해주세요."
+        textView.text = presenter.contentsTextViewPlaceHolderText
         textView.font = .systemFont(ofSize: 16.0, weight: .medium)
 
         return textView
@@ -91,6 +103,12 @@ extension ReviewWriteViewController: ReviewWriteProtocol {
         dismiss(animated: true)
     }
 
+    func save(imageURL: URL?, title: String, review: String) {
+        UserDefaults.standard.set(imageURL, forKey: "Image")
+        UserDefaults.standard.set(title, forKey: "Title")
+        UserDefaults.standard.set(review, forKey: "Review")
+    }
+
     func setupViews() {
         view.backgroundColor = .systemBackground
 
@@ -136,7 +154,7 @@ private extension ReviewWriteViewController {
     }
 
     @objc func didTapRightBarButton() {
-        presenter.didTapRightBarButton()
+        presenter.didTapRightBarButton(contentsText: contentsTextView.text)
     }
 
     @objc func didTapBookTitleButton() {
