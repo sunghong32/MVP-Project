@@ -1,6 +1,6 @@
 //
-//  BookReviewPresenterTests.swift
-//  BookReviewPresenterTests
+//  ReviewListPresenterTests.swift
+//  ReviewListPresenterTests
 //
 //  Created by 민성홍 on 2022/07/20.
 //
@@ -8,7 +8,7 @@
 import XCTest
 @testable import BookReview
 
-class BookReviewPresenterTests: XCTestCase {
+class ReviewListPresenterTests: XCTestCase {
     var sut: ReviewListPresenter!
     var viewController: MockReviewListViewController!
     var userDefaultsManager: MockUserDefaultsManager!
@@ -24,6 +24,7 @@ class BookReviewPresenterTests: XCTestCase {
     override func tearDown() {
         sut = nil
         viewController = nil
+        userDefaultsManager = nil
 
         super.tearDown()
     }
