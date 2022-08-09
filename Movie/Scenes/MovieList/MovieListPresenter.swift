@@ -12,10 +12,14 @@ protocol MoviewListProtocol: AnyObject {
     func setupSearchBar()
     func setupViews()
     func updateSearchTableView(isHidden: Bool)
+    func pushToMovieViewController(with movie: Movie)
+    func updateCollectionView()
 }
 
 final class MovieListPresenter: NSObject {
     private weak var viewController: MoviewListProtocol? // 메모리 릭
+
+    private let userDefaultsManager: UserDefaultsManagerProtocol
 
     private let movieSearchManager: MovieSearchManager
 
@@ -29,16 +33,23 @@ final class MovieListPresenter: NSObject {
 
     init(
         viewController: MoviewListProtocol,
+        userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager(),
         movieSearchManager: MovieSearchManager = MovieSearchManager()
     ) {
         self.viewController = viewController
         self.movieSearchManager = movieSearchManager
+        self.userDefaultsManager = userDefaultsManager
     }
     
     func viewDidLoad() {
         viewController?.setupNavigationBar()
         viewController?.setupSearchBar()
         viewController?.setupViews()
+    }
+
+    func viewWillAppear() {
+        likedMovie = userDefaultsManager.getMovies()
+        viewController?.updateCollectionView()
     }
 }
 
@@ -104,10 +115,18 @@ extension MovieListPresenter: UICollectionViewDataSource {
 
         return cell ?? UICollectionViewCell()
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = likedMovie[indexPath.row]
+        viewController?.pushToMovieViewController(with: movie)
+    }
 }
 
 extension MovieListPresenter: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = currentMovieSearchResult[indexPath.row]
+        viewController?.pushToMovieViewController(with: movie)
+    }
 }
 
 extension MovieListPresenter: UITableViewDataSource {
